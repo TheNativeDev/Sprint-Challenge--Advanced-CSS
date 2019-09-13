@@ -1,33 +1,63 @@
 // Navigation code here
 
-.nav {
-    width: 100%;
-    background-color: @nav-bg;
-    border-bottom: 2px solid @nav-border;
-    position: fixed;
-    top: 0;
-    opacity: 0.9;
-    .nav-cont {
-        padding: 2rem 0 1rem 0;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        h1 {
-            font-size: 3rem;
-            padding-bottom: 1.5rem;
-            padding-right: 1.5rem;
-
-            @media @mobile {
-                font-size: 4rem;
-                outline: black;
+header {
+    .intro-nav {
+      position: fixed;
+      .flex(@align: center);
+      flex-direction: column;
+      width: 100%;
+      max-width: 800px;
+      background-color: darken(@nav-bg, 10%);
+      border: 1px solid @nav-border;
+  
+      h1 {
+        font-size: 4rem;
+      }
+  
+      nav {
+        .flex(@justify:space-between);
+        width: 35em;
+        margin: 1rem 0;
+  
+        a {
+          color: @nav-font;
+          font-size: 1.5rem;
+          position: relative;
+          text-decoration: none;
+          padding-bottom: 8px;
+  
+          &:before,
+          &:after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: @btn-bg-color;
+          }
+          &:before {
+            .hoverAnimation(0, -8px, 0, ease-out);
+          }
+          &:after {
+            .hoverAnimation(0, 4px, 0.2s, ease-out);
+          }
+          &:hover,
+          &:focus {
+            &:before {
+              .hoverAnimation(1, 0, 0.2s, ease-out);
             }
+            &:after {
+              .hoverAnimation(1, 0, 02s, ease-out);
+              transition: transform 0s 0.2s ease-out, opacity 0s 0.2s;
+            }
+          }
         }
-        nav a {
-            margin-right: 2rem;
-            text-decoration: none;
-            color: @nav-font;
-            font-size: 1.5rem;
-        }
+      }
     }
-}
+  
+    img {
+      margin-top: 8rem;
+      width: 100%;
+    }
+  }
